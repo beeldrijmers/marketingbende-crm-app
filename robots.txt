@@ -1,0 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
+# Kompas is an internal application and must not be indexed.
+User-agent: *
+Disallow: /

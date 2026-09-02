@@ -1,0 +1,48 @@
+<svg width="280" height="240" viewBox="0 0 280 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+  <!--
+    Theme-neutral empty-state illustration (Kompas).
+    Monochrome slate with layered opacity and a transparent background so it
+    blends into both the light and dark themes when rendered inside <img>.
+  -->
+  <circle cx="140" cy="120" r="94" fill="#7C8698" opacity="0.06" />
+
+  <!-- back page, for depth -->
+  <rect
+    x="88"
+    y="52"
+    width="96"
+    height="120"
+    rx="10"
+    fill="#7C8698"
+    opacity="0.10"
+    transform="rotate(-7 136 112)"
+  />
+
+  <!-- front page with a folded corner -->
+  <path
+    d="M104 56 H168 L196 84 V180 A8 8 0 0 1 188 188 H104 A8 8 0 0 1 96 180 V64 A8 8 0 0 1 104 56 Z"
+    fill="#7C8698"
+    opacity="0.14"
+  />
+  <path
+    d="M104 56 H168 L196 84 V180 A8 8 0 0 1 188 188 H104 A8 8 0 0 1 96 180 V64 A8 8 0 0 1 104 56 Z"
+    fill="none"
+    stroke="#7C8698"
+    stroke-width="3.5"
+    stroke-linejoin="round"
+    opacity="0.5"
+  />
+  <path
+    d="M168 56 V80 A4 4 0 0 0 172 84 H196"
+    fill="none"
+    stroke="#7C8698"
+    stroke-width="3.5"
+    stroke-linejoin="round"
+    opacity="0.5"
+  />
+
+  <!-- placeholder text lines -->
+  <line x1="116" y1="112" x2="176" y2="112" stroke="#7C8698" stroke-width="6" stroke-linecap="round" opacity="0.38" />
+  <line x1="116" y1="132" x2="176" y2="132" stroke="#7C8698" stroke-width="6" stroke-linecap="round" opacity="0.28" />
+  <line x1="116" y1="152" x2="152" y2="152" stroke="#7C8698" stroke-width="6" stroke-linecap="round" opacity="0.20" />
+</svg>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Google-koppeling</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --grond: #ffffff;
+        --tekst: #14161e;
+        --zacht: #5b6070;
+        --rand: #e5e7eb;
+        --goed: #047857;
+        --fout: #b91c1c;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --grond: #14161e;
+          --tekst: #e8eaf0;
+          --zacht: #9aa1b1;
+          --rand: #262a36;
+          --goed: #34d399;
+          --fout: #f87171;
+        }
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: var(--grond);
+        color: var(--tekst);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+          sans-serif;
+        text-align: center;
+        padding: 24px;
+      }
+      .kaart {
+        max-width: 26rem;
+        border: 1px solid var(--rand);
+        border-radius: 12px;
+        padding: 32px 28px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      h1.goed {
+        color: var(--goed);
+      }
+      h1.fout {
+        color: var(--fout);
+      }
+      p {
+        margin: 0 0 6px;
+        line-height: 1.55;
+        color: var(--zacht);
+        font-size: 15px;
+      }
+      .klein {
+        margin-top: 14px;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      Deze pagina staat bewust op ons eigen domein en niet in de edge function.
+      De Supabase-gateway herschrijft de Content-Type van een functieantwoord
+      naar text/plain met nosniff: HTML vanaf hun domein wordt niet gerenderd,
+      en dat is hun bescherming tegen misbruik van een gedeeld domein. Het
+      gevolg was dat de gebruiker na het koppelen de kale HTML te zien kreeg.
+    -->
+    <div class="kaart">
+      <h1 id="kop">Bezig met koppelen</h1>
+      <p id="melding">Een moment.</p>
+      <p class="klein" id="sluiten"></p>
+    </div>
+
+    <script>
+      (function () {
+        // Het fragment en niet de query: zo komt de uitkomst niet in
+        // serverlogboeken of in de verwijzende URL terecht.
+        var params = new URLSearchParams(window.location.hash.slice(1));
+        var ok = params.get("ok") === "1";
+        var melding = params.get("melding") || "";
+
+        var kop = document.getElementById("kop");
+        kop.textContent = ok ? "Koppeling gelukt" : "Koppeling mislukt";
+        kop.className = ok ? "goed" : "fout";
+
+        // textContent en niet innerHTML: de melding komt uit een URL, en die is
+        // door de gebruiker te bewerken.
+        document.getElementById("melding").textContent =
+          melding || (ok ? "Het account is gekoppeld." : "Er ging iets mis.");
+
+        try {
+          if (window.opener) {
+            window.opener.postMessage(
+              { type: "kompas-google-oauth", ok: ok, melding: melding },
+              window.location.origin,
+            );
+          }
+        } catch (e) {
+          /* De opener kan al weg zijn; het scherm hieronder blijft kloppen. */
+        }
+
+        // Alleen sluiten als wij dit venster zelf hebben geopend. Iemand die de
+        // pagina rechtstreeks bezoekt hoort niet plots zijn tabblad kwijt te zijn.
+        if (window.opener) {
+          document.getElementById("sluiten").textContent =
+            "U kunt dit venster sluiten.";
+          setTimeout(function () {
+            window.close();
+          }, 1500);
+        }
+      })();
+    </script>
+  </body>
+</html>
