@@ -1,1 +1,0 @@
-import{bu as o}from"./index-DCMHM7EN.js";import"./react-vendor-BpwM1LRX.js";import"./dnd-vendor-kUuqBB18.js";import"./supabase-vendor-Dax_0g8U.js";import"./import-export-vendor-B-TnuAQX.js";import"./image-vendor-RfDGl-J6.js";import"./markdown-vendor-CB3HMLSg.js";const t=[["path",{d:"M4 4v16",key:"6qkkli"}]],l=o("tally-1",t);export{t as __iconNode,l as default};
