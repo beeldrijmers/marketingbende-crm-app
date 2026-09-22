@@ -1,1 +1,0 @@
-import{bM as o}from"./index-DrnxGqSv.js";import"./react-vendor-BpwM1LRX.js";import"./dnd-vendor-kUuqBB18.js";import"./supabase-vendor-Dax_0g8U.js";import"./import-export-vendor-B-TnuAQX.js";import"./image-vendor-RfDGl-J6.js";import"./markdown-vendor-CB3HMLSg.js";const t=[["path",{d:"M22 2 2 22",key:"y4kqgn"}]],c=o("slash",t);export{t as __iconNode,c as default};
