@@ -1,1 +1,0 @@
-import{bC as o}from"./index-BRjpqEX6.js";import"./react-vendor-BpwM1LRX.js";import"./dnd-vendor-kUuqBB18.js";import"./supabase-vendor-Dax_0g8U.js";import"./import-export-vendor-B-TnuAQX.js";import"./image-vendor-RfDGl-J6.js";import"./markdown-vendor-CB3HMLSg.js";const i=[["path",{d:"M12 20h.01",key:"zekei9"}]],d=o("wifi-zero",i);export{i as __iconNode,d as default};
